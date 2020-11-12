@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Answer4</title>
+</head>
+<body>
+    <form>
+        <label>Enter number of rows per triangle  </label>
+        <input type="number" id="rows" name="rows">
+        <br><br>
+        <label>Enter number of triangles in christmas tree </label>
+        <input type="number" id="Triangle" name="Triangle">
+        <br><br><br>
+        <input type="submit" value="Submit" id="myButton">
+    </form>
+</body>
+<script>
+    document.getElementById("myButton").addEventListener("click", function()
+    {
+        var rows = document.getElementById("rows").value;
+        var Triangle = document.getElementById("Triangle").value;
+        for(var triangle=0;triangle<Triangle;triangle++)
+        {
+            for(var i=0;i<rows;i++)
+            {
+                for(var j=rows-i; j>=0; j--)
+                {
+                    document.write("\xa0\xa0");   
+                }
+                for(var j=0; j<(2*i+1); j++)
+                {
+                    if(triangle==0 && j==0 && i==0)
+                    {
+                        document.write("*");    
+                    }
+                    else
+                    {
+                        document.write("0");
+                    }
+                }
+                document.write("<br>");
+            }
+        }
+        for(var j=0;j<rows;j++)
+        {
+            for(var i=0;i<rows;i++)
+            {
+                document.write("\xa0\xa0");     
+            }
+            var count=2;
+            for(var i=0;i<=count;i++)
+            {
+                document.write("0");            
+            }
+            document.write("<br>");
+        }
+
+    }, false);
+</script>
+</html>

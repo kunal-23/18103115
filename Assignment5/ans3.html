@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Answer3</title>
+</head>
+<body>
+    <form>
+        <label>Enter your string: </label>
+        <input type="text" id="string" name="string">
+        <br><br>
+        <input type="submit" value="Submit" id="myButton">
+    </form>
+</body>
+<script>
+    document.getElementById("myButton").addEventListener("click", function()
+    {
+        var str = document.getElementById("string").value;
+        var stringValid=true;
+        for(var i=0;i<str.length;i++)
+        {
+            if(str.charAt(i)!='('&&str.charAt(i)!=')'&&str.charAt(i)!='['&&str.charAt(i)!=']'&&str.charAt(i)!='{'&&str.charAt(i)!='}')
+            {
+                stringValid=false;
+            }
+        }
+        if(stringValid==false)
+        {
+            alert("Wrong Input");
+        }
+        else
+        {
+            var arr = new Array();                                          
+            var ans=true;
+            var temp;
+            for(var i=0;i<str.length;i++)
+            {
+                if(str.charAt(i)=="(")
+                {
+                    arr.push('(');
+                }
+                else if(str.charAt(i)=="[")
+                {
+                    arr.push('[');
+                }
+                else if(str.charAt(i)=="{")
+                {
+                    arr.push('{');
+                }
+                else if(str.charAt(i)==")")
+                {
+                    if(arr.length==0)
+                    {
+                        ans=false;
+                        break;
+                    }
+                    temp = arr.pop();
+                    if(temp!='(')
+                    {
+                        ans=false;
+                        break;
+                    }
+                }
+                else if(str.charAt(i)=="]")
+                {
+                    if(arr.length==0)
+                    {
+                        ans=false;
+                        break;
+                    }
+                    temp = arr.pop();
+                    if(temp!='[')
+                    {
+                        ans=false;
+                        break;
+                    }
+                }
+                else if(str.charAt(i)=="}")
+                {
+                    if(arr.length==0)
+                    {
+                        ans=false;
+                        break;
+                    }
+                    temp = arr.pop();
+                    if(temp!='{')
+                    {
+                        ans=false;
+                        break;
+                    }
+                }
+            }
+            if(arr.length!=0)
+            {
+                ans=false;
+            }
+            if(ans==true)
+            {
+                alert("Balanced!");
+            }
+            else
+            {
+                alert("Not balanced!");
+            }
+        }
+
+    }, false);
+</script>
+</html>
